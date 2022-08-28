@@ -9,11 +9,30 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return Home();
+  }
+}
+
+class Home extends StatefulWidget {
+  const Home({super.key});
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  Image myscoundimage = Image(image: AssetImage('images/2.jpeg'));
+  Image myfirstimage = Image(image: AssetImage('images/1.jpeg'));
+  Color mydefultcolor = Colors.pink;
+  @override
+  Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(),
-        drawer: Drawer(),
-        body: ListView(
+        home: Scaffold(
+      appBar: AppBar(),
+      drawer: Drawer(),
+      body: Container(
+        color: mydefultcolor,
+        child: ListView(
           children: [
             Column(
               children: [
@@ -31,11 +50,7 @@ class MyApp extends StatelessWidget {
                       SizedBox(
                         width: 50,
                       ),
-                      Container(
-                        height: 200,
-                        width: 200,
-                        child: Image(image: AssetImage('images/2.jpeg')),
-                      ),
+                      Container(height: 200, width: 200, child: myfirstimage),
                       Column(
                         children: [
                           Container(
@@ -171,7 +186,7 @@ class MyApp extends StatelessWidget {
                       Container(
                         height: 200,
                         width: 200,
-                        child: Image(image: AssetImage('images/1.jpeg')),
+                        child: myscoundimage
                       ),
                     ],
                   ),
@@ -343,44 +358,78 @@ class MyApp extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 180),
+                  margin: EdgeInsets.only(left: 100),
                   child: Row(
                     children: [
-                      Container(
-                        width: 20,
-                        height: 20,
-                        decoration: BoxDecoration(
-                            color: Colors.red,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(50))),
+                      ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            mydefultcolor = Colors.green;
+                          });
+                        },
+                        child: Text(""),
+                        style: ElevatedButton.styleFrom(primary: Colors.green),
                       ),
-                      Container(      width: 20,
-                        height: 20,
-                        decoration: BoxDecoration(
-                            color: Colors.yellow,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(50)))),
-                      Container(      width: 20,
-                        height: 20,
-                        decoration: BoxDecoration(
-                            color: Colors.blue,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(50)))),
-                      Container(      width: 20,
-                        height: 20,
-                        decoration: BoxDecoration(
-                            color: Colors.green,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(50))))
+                      ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            mydefultcolor = Colors.black;
+                          });
+                        },
+                        child: Text(""),
+                        style: ElevatedButton.styleFrom(primary: Colors.black),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            mydefultcolor = Colors.blue;
+                          });
+                        },
+                        child: Text(""),
+                        style: ElevatedButton.styleFrom(primary: Colors.blue),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            mydefultcolor = Colors.yellow;
+                          });
+                        },
+                        child: Text(""),
+                        style: ElevatedButton.styleFrom(primary: Colors.yellow),
+                      )
                     ],
                   ),
+                ),
+                Container(margin: EdgeInsets.only(left: 150),child:
+                Row(
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          myfirstimage =
+                              Image(image: AssetImage('images/5.jpeg'));
+                        });
+                      },
+                      child: Text("change1"),
+                      style: ElevatedButton.styleFrom(primary: Colors.purple),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          myscoundimage =
+                              Image(image: AssetImage('images/6.jpeg'));
+                        });
+                      },
+                      child: Text("change 2"),
+                      style: ElevatedButton.styleFrom(primary: Colors.orange),
+                    )
+                  ],
                 )
-              ],
+             ) ],
             )
           ],
         ),
       ),
-    );
+    ));
   }
 }
-//finshed
